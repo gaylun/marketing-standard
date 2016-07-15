@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property resource="config/logback.properties" />
+<!--     <property name="LOG_HOME" value="/httx/logs" />   -->
+
+    <!-- 控制台输出 -->   
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> 
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}[%-5p]%t[%c.%M:%L] - %m%n</pattern>   
+        </encoder> 
+    </appender>
+    
+    <!-- 输出到指定文件 -->
+    <appender name="fileAppender" class="ch.qos.logback.core.FileAppender">  
+	    <file>${LOG_HOME}/out.log</file>  
+	    <encoder>
+	        <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}[%-5p]%t[%c.%M:%L] - %m%n</pattern>  
+	    </encoder>  
+	    <append>true</append>  
+	    <prudent>false</prudent>  
+	</appender>
+    
+    <!-- 日志输出级别 -->
+    <root level="DEBUG">
+    	<appender-ref ref="STDOUT" />
+        <appender-ref ref="fileAppender" />
+    </root>
+</configuration>
